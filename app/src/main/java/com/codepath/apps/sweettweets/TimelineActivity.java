@@ -18,6 +18,7 @@ import com.codepath.apps.sweettweets.fragments.PageFragmentHome;
 import com.codepath.apps.sweettweets.fragments.PageFragmentMentions;
 
 
+
 public class TimelineActivity extends ActionBarActivity {
 
 
@@ -65,7 +66,6 @@ public class TimelineActivity extends ActionBarActivity {
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 // Inflate the menu; this adds items to the action bar if it is present.
@@ -91,11 +91,15 @@ public class TimelineActivity extends ActionBarActivity {
 
 
 
-    public static class PagerAdapter extends Fragment {
+    public class PagerAdapter extends FragmentPagerAdapter {
         // final int PAGE_COUNT = 2;
-        private final FragmentManager fm = null;
-        private String tabTitles[] = new String[] { "Home", "Mentions" };
-        private int position;
+        private String tabTitles[] = { "Home", "Mentions" };
+
+
+
+        public PagerAdapter(android.support.v4.app.FragmentManager fm) {
+            super(fm);
+        }
 
 
 
