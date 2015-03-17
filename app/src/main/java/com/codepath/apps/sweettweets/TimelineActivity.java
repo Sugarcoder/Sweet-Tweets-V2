@@ -1,11 +1,11 @@
 package com.codepath.apps.sweettweets;
 
+import android.app.FragmentManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -14,6 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.astuetz.PagerSlidingTabStrip;
+import com.codepath.apps.sweettweets.fragments.PageFragmentHome;
+import com.codepath.apps.sweettweets.fragments.PageFragmentMentions;
+
 
 public class TimelineActivity extends ActionBarActivity {
 
@@ -87,4 +90,40 @@ public class TimelineActivity extends ActionBarActivity {
     }
 
 
+
+    public static class PagerAdapter extends Fragment {
+        // final int PAGE_COUNT = 2;
+        private final FragmentManager fm = null;
+        private String tabTitles[] = new String[] { "Home", "Mentions" };
+        private int position;
+
+
+
+        public int getCount() {
+            return tabTitles.length;
+        }
+
+
+        public Fragment getItem(int position) {
+            if (position == 0) {
+                return new PageFragmentHome();
+            } else if (position == 1) {
+                return new PageFragmentMentions();
+            } else {
+                return null;
+            }
+        }
+
+
+        public CharSequence getPageTitle(int position) {
+            // Generate title based on item position
+            return tabTitles[position];
+        }
+
+    }
+
+
+
 }
+
+
