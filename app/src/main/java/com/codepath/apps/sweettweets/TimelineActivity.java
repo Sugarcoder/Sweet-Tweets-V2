@@ -86,6 +86,7 @@ public class TimelineActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -125,8 +126,6 @@ public class TimelineActivity extends ActionBarActivity {
         }
 
     }
-
-
 
 }
 
