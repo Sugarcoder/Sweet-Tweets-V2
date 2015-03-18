@@ -1,11 +1,11 @@
 package com.codepath.apps.sweettweets;
 
-import android.app.FragmentManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -22,6 +22,7 @@ import com.codepath.apps.sweettweets.fragments.PageFragmentMentions;
 public class TimelineActivity extends ActionBarActivity {
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,24 +37,53 @@ public class TimelineActivity extends ActionBarActivity {
 
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+        viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()) {
+
+                                 
+            class PagerAdapter extends FragmentPagerAdapter {
+
+                private String tabTitles[] = { "Home", "Mentions" };
 
 
-            @Override
-            public int getCount() {
-                return 0;
+                public PagerAdapter(android.support.v4.app.FragmentManager fm) {
+                    super(fm);
+                }
+
+
+
+                public int getCount() {
+
+                    return tabTitles.length;
+                }
+
+
+
+                public Fragment getItem(int position) {
+                   if (position == 0) {
+                       return new PageFragmentHome();
+                   } else if (position == 1) {
+                       return new PageFragmentMentions();
+                   } else {
+                       return null;
+                   }
+                }
+
+
+
+
+                public CharSequence getPageTitle(int position) {
+                // Generate title based on item position
+                    return tabTitles[position];
+                }
+
+
+
             }
 
-            @Override
-            public Fragment getItem(int position) {
-                return null;
-            }
+        }
 
-            @Override
-            public boolean isViewFromObject(View view, Object object) {
-                return false;
-            }
-        });
+
+       );
 
 
 
@@ -62,8 +92,8 @@ public class TimelineActivity extends ActionBarActivity {
         // Attach the view pager to the tab strip
         tabsStrip.setViewPager(viewPager);
 
-
     }
+
 
 
     @Override
@@ -90,42 +120,6 @@ public class TimelineActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
-    public class PagerAdapter extends FragmentPagerAdapter {
-        // final int PAGE_COUNT = 2;
-        private String tabTitles[] = { "Home", "Mentions" };
-
-
-
-        public PagerAdapter(android.support.v4.app.FragmentManager fm) {
-            super(fm);
-        }
-
-
-
-        public int getCount() {
-            return tabTitles.length;
-        }
-
-
-        public Fragment getItem(int position) {
-            if (position == 0) {
-                return new PageFragmentHome();
-            } else if (position == 1) {
-                return new PageFragmentMentions();
-            } else {
-                return null;
-            }
-        }
-
-
-        public CharSequence getPageTitle(int position) {
-            // Generate title based on item position
-            return tabTitles[position];
-        }
-
-    }
 
 }
 
