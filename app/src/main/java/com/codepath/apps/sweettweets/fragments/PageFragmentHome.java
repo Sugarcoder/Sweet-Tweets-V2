@@ -1,5 +1,6 @@
 package com.codepath.apps.sweettweets.fragments;
 
+
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.util.Log;
