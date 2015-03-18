@@ -26,7 +26,7 @@ public class TweetListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_tweet_list, parent, true);
+        View v = inflater.inflate(R.layout.fragment_tweet_list, parent, false);
 
 
         // Find the ListView

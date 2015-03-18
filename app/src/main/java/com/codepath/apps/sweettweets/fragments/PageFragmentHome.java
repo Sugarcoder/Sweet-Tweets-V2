@@ -49,7 +49,8 @@ public class PageFragmentHome extends TweetListFragment {
 
 
         // Get the client.
-        client = TwitterApplication.getRestClient();       // This is important because we can get the singleton client (access the same data across all activities)
+        client = TwitterApplication.getRestClient();
+        // This is important because we can get the singleton client (access the same data across all activities)
 
 
         // Populate the timeline.
@@ -119,7 +120,7 @@ public class PageFragmentHome extends TweetListFragment {
     // Set the associated text for the title
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, parent, false);
+        View view = inflater.inflate(R.layout.fragment_tweet_list, parent, false);
         // TextView tvHome = (TextView) view.findViewById(lvTweets);
         // tvHome.setText("Home");  // + mPage
         return view;

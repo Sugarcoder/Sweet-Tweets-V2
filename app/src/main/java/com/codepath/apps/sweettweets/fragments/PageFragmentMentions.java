@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.TextView;
 
 import com.codepath.apps.sweettweets.R;
 import com.codepath.apps.sweettweets.TweetEndlessScrollListener;
@@ -51,7 +50,9 @@ public class PageFragmentMentions extends TweetListFragment {
 
 
         // Get the client.
-        client = TwitterApplication.getRestClient();       // This is important because we can get the singleton client (access the same data across all activities)
+        client = TwitterApplication.getRestClient();
+        // This is important because we can get the singleton client (access the same data across all activities)
+
 
         // Populate the timeline.
         populateTimeline();
@@ -121,8 +122,8 @@ public class PageFragmentMentions extends TweetListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_mentions, parent, false);
-        // TextView tvMentions = (TextView) view.findViewById(R.id.lvTweets);
+        View view = inflater.inflate(R.layout.fragment_tweet_list, parent, false);
+        // TextView tvMentions = (TextView) view.findViewById(R.id.tvMentions);
         // tvMentions.setText("Mentions");   // + mPage
         return view;
     }
