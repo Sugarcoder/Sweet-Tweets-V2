@@ -59,7 +59,7 @@ public class PageFragmentMentions extends TweetListFragment {
 
         if (savedInstanceState == null) {
             // Access the fragment.
-            fragmentTweetList = (TweetListFragment) getFragmentManager().findFragmentById(R.id.tvMentions);
+            fragmentTweetList = (TweetListFragment) getFragmentManager().findFragmentById(R.id.lvTweets);
         }
 
 
@@ -122,8 +122,8 @@ public class PageFragmentMentions extends TweetListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mentions, parent, false);
-        TextView tvMentions = (TextView) view.findViewById(R.id.tvMentions);
-        tvMentions.setText("Mentions");   // + mPage
+        // TextView tvMentions = (TextView) view.findViewById(R.id.lvTweets);
+        // tvMentions.setText("Mentions");   // + mPage
         return view;
     }
 }

@@ -20,6 +20,8 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import static com.codepath.apps.sweettweets.R.id.lvTweets;
+
 
 // In this case, the fragment displays simple text based on the page
 public class PageFragmentHome extends TweetListFragment {
@@ -56,7 +58,7 @@ public class PageFragmentHome extends TweetListFragment {
 
         if (savedInstanceState == null) {
             // Access the fragment.
-            fragmentTweetList = (TweetListFragment) getFragmentManager().findFragmentById(R.id.tvHome);
+            fragmentTweetList = (TweetListFragment) getFragmentManager().findFragmentById(R.id.lvTweets);
         }
 
 
@@ -118,8 +120,8 @@ public class PageFragmentHome extends TweetListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, parent, false);
-        TextView tvHome = (TextView) view.findViewById(R.id.tvHome);
-        tvHome.setText("Home");  // + mPage
+        // TextView tvHome = (TextView) view.findViewById(lvTweets);
+        // tvHome.setText("Home");  // + mPage
         return view;
     }
 }
