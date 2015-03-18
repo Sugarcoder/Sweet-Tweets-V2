@@ -26,9 +26,9 @@ import org.json.JSONObject;
 
 public class PageFragmentMentions extends TweetListFragment {
 
-    public static final String ARG_PAGE = "ARG_PAGE";
+    public static final String Mentions = "Mentions";
 
-    private int mPage;
+    // private int mPage;
 
     private TwitterClient client;
     private TweetListFragment fragmentTweetList;
@@ -36,7 +36,7 @@ public class PageFragmentMentions extends TweetListFragment {
 
     public static PageFragmentMentions newInstance(int page) {
         Bundle args = new Bundle();
-        args.putInt(ARG_PAGE, page);
+        args.putInt(Mentions, page);
         PageFragmentMentions fragment = new PageFragmentMentions();
         fragment.setArguments(args);
         return fragment;
@@ -46,7 +46,7 @@ public class PageFragmentMentions extends TweetListFragment {
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        mPage = getArguments().getInt(ARG_PAGE);
+        // mPage = getArguments().getInt(Mentions);
 
 
 
@@ -121,9 +121,9 @@ public class PageFragmentMentions extends TweetListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_mentions, parent, true);
+        View view = inflater.inflate(R.layout.fragment_mentions, parent, false);
         TextView tvMentions = (TextView) view.findViewById(R.id.tvMentions);
-        tvMentions.setText("Mentions" + mPage);
+        tvMentions.setText("Mentions");   // + mPage
         return view;
     }
 }

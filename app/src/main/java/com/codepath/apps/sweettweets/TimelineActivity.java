@@ -1,5 +1,6 @@
 package com.codepath.apps.sweettweets;
 
+import android.app.FragmentManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -58,6 +59,7 @@ public class TimelineActivity extends ActionBarActivity {
     }
 
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -73,6 +75,7 @@ public class TimelineActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
 
 

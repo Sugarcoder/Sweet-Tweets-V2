@@ -24,9 +24,9 @@ import org.json.JSONObject;
 // In this case, the fragment displays simple text based on the page
 public class PageFragmentHome extends TweetListFragment {
 
-    public static final String ARG_PAGE = "ARG_PAGE";
+    public static final String Home = "Home";
 
-    private int mPage;
+    // private int mPage;
 
     private TwitterClient client;
     private TweetListFragment fragmentTweetList;
@@ -34,7 +34,7 @@ public class PageFragmentHome extends TweetListFragment {
 
     public static PageFragmentHome newInstance(int page) {
         Bundle args = new Bundle();
-        args.putInt(ARG_PAGE, page);
+        args.putInt(Home, page);
         PageFragmentHome fragment = new PageFragmentHome();
         fragment.setArguments(args);
         return fragment;
@@ -42,14 +42,13 @@ public class PageFragmentHome extends TweetListFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
+        // mPage = getArguments().getInt(Home);
         super.onCreate(savedInstanceState);
-        mPage = getArguments().getInt(ARG_PAGE);
-
 
 
         // Get the client.
         client = TwitterApplication.getRestClient();       // This is important because we can get the singleton client (access the same data across all activities)
+
 
         // Populate the timeline.
         populateTimeline();
@@ -118,9 +117,9 @@ public class PageFragmentHome extends TweetListFragment {
     // Set the associated text for the title
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, parent, true);
+        View view = inflater.inflate(R.layout.fragment_home, parent, false);
         TextView tvHome = (TextView) view.findViewById(R.id.tvHome);
-        tvHome.setText("Home" + mPage);
+        tvHome.setText("Home");  // + mPage
         return view;
     }
 }
