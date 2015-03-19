@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.ListView;
 
 import com.codepath.apps.sweettweets.R;
 import com.codepath.apps.sweettweets.TweetEndlessScrollListener;
@@ -19,6 +20,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import static com.codepath.apps.sweettweets.R.id.lvTweets;
 
 
 // In this case, the fragment displays simple text based on the page
@@ -30,7 +32,7 @@ public class PageFragmentMentions extends TweetListFragment {
     // private int mPage;
 
     private TwitterClient client;
-    private TweetListFragment fragmentTweetList;
+    private ListView lvMentionTweets;
 
 
     public static PageFragmentMentions newInstance(int page) {
@@ -41,6 +43,8 @@ public class PageFragmentMentions extends TweetListFragment {
         return fragment;
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -48,26 +52,25 @@ public class PageFragmentMentions extends TweetListFragment {
         // mPage = getArguments().getInt(Mentions);
 
 
-
         // Get the client.
         client = TwitterApplication.getRestClient();
         // This is important because we can get the singleton client (access the same data across all activities)
+
+
+
+        if (savedInstanceState == null) {
+            // Access the fragment.
+            // fragmentTweetList = (TweetListFragment) getFragmentManager().findFragmentById(R.id.lvTweets);
+        }
 
 
         // Populate the timeline.
         populateTimeline();
 
 
-        if (savedInstanceState == null) {
-            // Access the fragment.
-            fragmentTweetList = (TweetListFragment) getFragmentManager().findFragmentById(R.id.lvTweets);
-        }
-
-
-
-
         // Attach the listener to the AdapterView onCreate
         AbsListView lvTweets = null;
+
 
         if (lvTweets != null) {
             lvTweets.setOnScrollListener(new TweetEndlessScrollListener() {
@@ -82,6 +85,20 @@ public class PageFragmentMentions extends TweetListFragment {
             });
         }
 
+    }
+
+
+
+
+    // Inflate the fragment layout we defined above for this fragment
+    // Set the associated text for the title
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_tweet_list, parent, false);
+        lvMentionTweets = (ListView) view.findViewById(lvTweets);
+        lvMentionTweets.setAdapter(aTweets);
+        return view;
     }
 
 
@@ -101,7 +118,12 @@ public class PageFragmentMentions extends TweetListFragment {
                 // Create Models and add them to the adapter
 
                 // Load the Models into the ListView
-                fragmentTweetList.addAll(Tweet.fromJSONArray(json));     // 'aTweets' is the old one, instead of 'fragmentTweetList'
+
+
+                aTweets.addAll(Tweet.fromJSONArray(json));
+                aTweets.notifyDataSetChanged();
+
+
                 // max_id = fragmentTweetList.getItem(fragmentTweetList.getCount() - 1).getUid();
             }
 
@@ -116,17 +138,6 @@ public class PageFragmentMentions extends TweetListFragment {
     }
 
 
-
-    // Inflate the fragment layout we defined above for this fragment
-    // Set the associated text for the title
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_tweet_list, parent, false);
-        // TextView tvMentions = (TextView) view.findViewById(R.id.tvMentions);
-        // tvMentions.setText("Mentions");   // + mPage
-        return view;
-    }
 }
 
 

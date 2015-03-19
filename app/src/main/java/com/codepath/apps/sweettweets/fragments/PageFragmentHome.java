@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.TextView;
+import android.widget.ListView;
 
 import com.codepath.apps.sweettweets.R;
 import com.codepath.apps.sweettweets.TweetEndlessScrollListener;
@@ -17,8 +17,8 @@ import com.codepath.apps.sweettweets.TwitterClient;
 import com.codepath.apps.sweettweets.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
+import org.apache.http.Header;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import static com.codepath.apps.sweettweets.R.id.lvTweets;
 
@@ -31,7 +31,11 @@ public class PageFragmentHome extends TweetListFragment {
     // private int mPage;
 
     private TwitterClient client;
-    private TweetListFragment fragmentTweetList;
+    private ListView lvHomeTweets;
+
+
+    public PageFragmentHome() {
+    }
 
 
     public static PageFragmentHome newInstance(int page) {
@@ -41,6 +45,8 @@ public class PageFragmentHome extends TweetListFragment {
         fragment.setArguments(args);
         return fragment;
     }
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,65 +59,35 @@ public class PageFragmentHome extends TweetListFragment {
         // This is important because we can get the singleton client (access the same data across all activities)
 
 
-        // Populate the timeline.
-        populateTimeline();
-
-
         if (savedInstanceState == null) {
             // Access the fragment.
-            fragmentTweetList = (TweetListFragment) getFragmentManager().findFragmentById(R.id.lvTweets);
+            // fragment_tweet_list = (TweetListFragment) getFragmentManager().findFragmentById(R.id.lvTweets);
         }
 
 
+        // Populate the timeline.
+        populateTimeline();
 
 
         // Attach the listener to the AdapterView onCreate
         AbsListView lvTweets = null;
 
-        if (lvTweets != null) {
+        /* if (lvTweets != null) {
             lvTweets.setOnScrollListener(new TweetEndlessScrollListener() {
 
                 @Override
                 public void onLoadMore(int page, int totalItemsCount) {
                     // Triggered only when new data needs to be appended to the list
                     // Add whatever code is needed to append new items to your AdapterView
+
+
+
                     populateTimeline();
                     // or customLoadMoreDataFromApi(totalItemsCount);
                 }
             });
-        }
+        }  */
 
-    }
-
-
-
-    private void populateTimeline() {
-        long max_id = 0;
-        client.getPageFragmentHome(max_id, new JsonHttpResponseHandler() {
-            // Success
-
-
-            public void onSuccess(int statusCode, PreferenceActivity.Header[] headers, JSONArray json) {
-                Log.d("Debug", json.toString());
-
-
-                // Deserialize JSON
-
-                // Create Models and add them to the adapter
-
-                // Load the Models into the ListView
-                fragmentTweetList.addAll(Tweet.fromJSONArray(json));     // 'aTweets' is the old one, instead of 'fragmentTweetList'
-                // max_id = fragmentTweetList.getItem(fragmentTweetList.getCount() - 1).getUid();
-            }
-
-
-            // Failure
-
-            public void onFailure(int statusCode, PreferenceActivity.Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                Log.d("Debug", errorResponse.toString());
-            }
-
-        });
     }
 
 
@@ -121,10 +97,48 @@ public class PageFragmentHome extends TweetListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tweet_list, parent, false);
-        // TextView tvHome = (TextView) view.findViewById(lvTweets);
+        lvHomeTweets = (ListView) view.findViewById(lvTweets);
+        lvHomeTweets.setAdapter(aTweets);
         // tvHome.setText("Home");  // + mPage
         return view;
     }
+
+
+
+    private void populateTimeline() {
+        long max_id = 0;
+        client.getPageFragmentHome(max_id, new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray json) {
+                // Log.d("Debug", json.toString());
+
+
+                // Deserialize JSON
+                // Create Models and add them to the adapter
+
+                // Load the Models into the ListView
+
+
+                aTweets.addAll(Tweet.fromJSONArray(json));
+                aTweets.notifyDataSetChanged();
+
+                // max_id = fragmentTweetList.getItem(fragmentTweetList.getCount() - 1).getUid();
+
+            }
+
+
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+            }
+
+        });
+
+
+    }
+
+
 }
 
 

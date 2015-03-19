@@ -19,7 +19,7 @@ import java.util.List;
 public class TweetListFragment extends Fragment {
 
 
-    private TweetsArrayAdapter aTweets; // Instantiating the objects
+    protected TweetsArrayAdapter aTweets; // Instantiating the objects
 
 
     // INFLATE LOGIC
@@ -32,11 +32,14 @@ public class TweetListFragment extends Fragment {
         // Find the ListView
         ListView lvTweets = (ListView) v.findViewById(R.id.lvTweets);
 
+
         // Connect the adapter to the listview
         lvTweets.setAdapter(aTweets);
 
+
         return v;
     }
+
 
 
 

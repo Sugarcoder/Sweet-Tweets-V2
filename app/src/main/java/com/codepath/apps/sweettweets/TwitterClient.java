@@ -30,7 +30,7 @@ public class TwitterClient extends OAuthBaseClient {
 	public static final String REST_CONSUMER_SECRET = "aSlN7OgYM4MGSNESSMPrRSOfKqLVWob1gCQNBwQPY7O8EULqtN"; // Change this
 	public static final String REST_CALLBACK_URL = "oauth://cpsweettweets"; // Change this (here and in manifest)
     private long max_id;
-    private AsyncHttpResponseHandler handler;
+    private JsonHttpResponseHandler handler;
 
 
     public TwitterClient(Context context) {
@@ -51,7 +51,7 @@ public class TwitterClient extends OAuthBaseClient {
 
     // First step to building out any Endpoint is to create a method.
 
-    public void getPageFragmentHome(long max_id, AsyncHttpResponseHandler handler) {
+    public void getPageFragmentHome(long max_id, JsonHttpResponseHandler handler) {
         String apiUrl = getApiUrl("statuses/home_timeline.json");
         // Specify the params
         RequestParams params = new RequestParams();
