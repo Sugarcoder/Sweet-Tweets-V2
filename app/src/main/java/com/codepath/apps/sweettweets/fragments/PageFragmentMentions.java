@@ -17,6 +17,7 @@ import com.codepath.apps.sweettweets.TwitterClient;
 import com.codepath.apps.sweettweets.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
+import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -109,9 +110,10 @@ public class PageFragmentMentions extends TweetListFragment {
             // Success
 
 
-            public void onSuccess(int statusCode, PreferenceActivity.Header[] headers, JSONArray json) {
-                Log.d("Debug", json.toString());
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray json) {
 
+                // Log.d("Debug", json.toString());
 
                 // Deserialize JSON
 
@@ -119,13 +121,23 @@ public class PageFragmentMentions extends TweetListFragment {
 
                 // Load the Models into the ListView
 
-
                 aTweets.addAll(Tweet.fromJSONArray(json));
                 aTweets.notifyDataSetChanged();
 
 
                 // max_id = fragmentTweetList.getItem(fragmentTweetList.getCount() - 1).getUid();
+
+
             }
+
+
+
+
+
+
+
+
+
 
 
             // Failure

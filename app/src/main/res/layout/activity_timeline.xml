@@ -7,6 +7,21 @@
     tools:context="com.codepath.apps.sweettweets.TimelineActivity">
 
 
+
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lvTweets"
+        android:layout_alignTop="@+id/viewpager"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+
+
+
+
     <com.astuetz.PagerSlidingTabStrip
         android:id="@+id/tabs"
         app:pstsShouldExpand="true"
@@ -23,6 +38,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:layout_below="@+id/tabs" />
+
 
 
 </RelativeLayout>
