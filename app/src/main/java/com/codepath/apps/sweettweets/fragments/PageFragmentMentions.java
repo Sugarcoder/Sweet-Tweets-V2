@@ -131,20 +131,18 @@ public class PageFragmentMentions extends TweetListFragment {
             }
 
 
-
-
-
-
-
-
-
-
-
             // Failure
 
-            public void onFailure(int statusCode, PreferenceActivity.Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                Log.d("Debug", errorResponse.toString());
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
             }
+
+
+            /* public void onFailure(int statusCode, PreferenceActivity.Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                Log.d("Debug", errorResponse.toString());
+            } */
 
         });
     }
