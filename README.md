@@ -1,6 +1,6 @@
 # Sweet Tweets 
 
-This is a simple Twitter application with fragments.
+This is a simple Twitter application with the ability to view tweets and switch tabs (Home, Mentions) using fragments.
 
 ## Features:
 
