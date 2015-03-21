@@ -1,6 +1,6 @@
 # Sweet Tweets v2
 
-This is a Twitter application with the ability to view tweets and switch tabs (Home, Mentions) using fragments.
+This is a Twitter application with the ability to view tweets and switch tabs (Home, Mentions), using fragments.
 
 ## Features:
 
