@@ -4,14 +4,14 @@ This is a Twitter application with the ability to view tweets and switch tabs (H
 
 ## Features:
 
-- User can sign in to Twitter using OAuth login
-- User can view the tweets from their home timeline
+- Users can sign in to Twitter using OAuth login
+- Users can view the tweets from their home timeline
 - Username, name, and body is displayed for each tweet
 - The relative timestamp for each tweet "8m", "7h" is displayed
-- User can view more tweets as they scroll with infinite pagination
-- User can switch between Timeline and Mentions view using tabs.
-  - User can view their home timeline tweets.
-  - User can view the recent mentions of their username.
+- Users can view more tweets as they scroll with infinite pagination
+- Users can switch between Timeline and Mentions view using tabs.
+  - Users can view their home timeline tweets.
+  - Users can view the recent mentions of their username.
 
 
 <img src="http://i1369.photobucket.com/albums/ag238/sugarcoder/CodePath/Twitter2_zpsxgwotwvy.png" border="0" width="300" height="400" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i1369.photobucket.com/albums/ag238/sugarcoder/CodePath/Twitter3_zpsn2n1sbgm.png" border="0" width="300" height="400" />
