@@ -14,6 +14,9 @@ This is a Twitter application with the ability to view tweets and switch tabs (H
   - User can view the recent mentions of their username.
 
 
+<img src="http://i1369.photobucket.com/albums/ag238/sugarcoder/CodePath/Twitter2_zpsxgwotwvy.png" border="0" alt=" photo Twitter2_zpsxgwotwvy.png" width="300" height="400" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="http://i1369.photobucket.com/albums/ag238/sugarcoder/CodePath/Twitter3_zpsn2n1sbgm.png" border="0" alt=" photo Twitter3_zpsn2n1sbgm.png" width="300" height="400" />
+
+
 ### External libraries: 
 
 - android-async-http
