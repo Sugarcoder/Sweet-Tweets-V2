@@ -2,7 +2,7 @@
 
 This is a Twitter application with the ability to view tweets and switch tabs (Home, Mentions), using fragments.
 
-## Features:
+### User Stories:
 
 - Users can sign in to Twitter using OAuth login
 - Users can view the tweets from their home timeline
